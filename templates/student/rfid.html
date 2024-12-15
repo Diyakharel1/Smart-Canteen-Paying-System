@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+{% endblock link %}
+
+{% block content %}
+<main>
+    <div class="main-container">
+        <div class="site-main">
+            <div class="content">
+                <div class="form-container">
+                    <form id="rfid-form" method="POST">
+                        {% csrf_token %}
+                        <h2>RFID Registration Form</h2>
+                        <p class="instructions">*Please fill out the details below to complete your registration.</p>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            {{ form.full_name }}
+
+                            <label for="email">Email Address</label>
+                            {{ form.email_address }}
+
+                            <label for="phone">Phone Number</label>
+                            {{ form.phone_number }}
+
+                            <label for="id">ID Number</label>
+                            {{ form.student_id }}
+
+                            <label for="address">Address</label>
+                            {{ form.address }}
+
+                            <div class="date-container">
+                                <div class="date-field">
+                                    <label for="issuance-date">Issuance Date</label>
+                                    {{ form.issuance_date }}
+                                </div>
+                                <div class="date-field">
+                                    <label for="expiry-date">Expiry Date</label>
+                                    {{ form.expiry_date }}
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit-btn">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

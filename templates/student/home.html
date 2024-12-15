@@ -1,0 +1,127 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock link %}
+
+{% block search %}
+<div class="search-bar">
+    <input type="text" placeholder="Search...">
+</div>
+<div class="profile-content">
+    <div class="add-to-cart">
+        <a class="cart" href="#" onclick="toggleCartPopup()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">{{order_items.count}}</span>
+        </a>
+    </div>
+</div>
+{% endblock search %}
+
+{% block content %}
+<main class="content">
+    <div class="banner">
+        <img src="{% static 'images/o-banner.jpg' %}" alt="Canteen Image">
+    </div>
+</main>
+
+<aside class="right-sidebar">
+    <div class="balance">
+        <span>Your Balance</span>
+        <div class="balance-container">
+            <p>Your Balance <br> Rs. <strong>{{ user_rfid.balance }}</strong></p>
+        </div>
+    </div>
+    <div class="rfid">
+        <span>Your RFID</span>
+        <div class="rfid-container">
+            <p>ID Number <br>{{ user_rfid.rfid }}</p>
+            <!-- <a href="{% url 'rfidform' %}" class="id">Apply RFID</a> -->
+        </div>
+    </div>
+</aside>
+</div>
+<div class="section-container">
+    <section class="category-section">
+        <h2>Category</h2>
+        <div class="categories">
+            <div class="category-item">
+                <img src="{% static 'images/veg.jpg' %}" alt="Veg Options">
+                <button>Veg Options</button>
+            </div>
+            <div class="category-item">
+                <img src="{% static 'images/nonveg.jpg' %}" alt="Non-Veg Options">
+                <button>Non-Veg Options</button>
+            </div>
+            <div class="category-item">
+                <img src="{% static 'images/drink.jpg' %}" alt="Drinks">
+                <button>Drinks</button>
+            </div>
+        </div>
+    </section>
+    <section class="popular-dishes-section">
+        <h2>Popular Dishes</h2>
+        <div class="dishes">
+            <div class="dish-item">
+                <img src="{% static 'images/momo.jpg' %}" alt="Buff Jhol Momo">
+                <p>Buff Jhol Momo</p>
+                <span>Rs. 150/per plate</span>
+                <i class="heart"><img src="{% static 'images/heart.svg' %}" alt="heart"></i>
+            </div>
+            <div class="dish-item">
+                <img src="{% static 'images/samosa.jpg' %}" alt="Samosa">
+                <p>Samosa</p>
+                <span>Rs. 25/per piece</span>
+                <i class="heart"><img src="{% static 'images/heart.svg' %}" alt="heart"></i>
+            </div>
+            <div class="dish-item">
+                <img src="{% static 'images/chowmein.jpg' %}" alt="Chicken Chowmein">
+                <p>Chicken Chowmein</p>
+                <span>Rs. 120/per plate</span>
+                <i class="heart"><img src="{% static 'images/heart.svg' %}" alt="heart"></i>
+            </div>
+        </div>
+        <a href="{% url 'menu' %}" class="view-more">View More</a>
+        <button class="order-now"><a href="{% url 'menu' %}">Order Now</a></button>
+    </section>
+</div>
+<!-- <script type="module">
+    // Import the functions you need from the SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        "apiKey": "AIzaSyAkvuzmGmXX0XezhSeOqltGKAVfwHHo5M4",
+        "authDomain": "newupdatedcanteen.firebaseapp.com",
+        "databaseURL": "https://newupdatedcanteen-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "projectId": "newupdatedcanteen",
+        "storageBucket": "newupdatedcanteen.appspot.com",
+        "messagingSenderId": "333329487780",
+        "appId": "1:333329487780:web:bd5d1e17021470e8dc9331",
+        "measurementId": "G-R6490XPPFG"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Reference to a specific user's balance and RFID (based on user ID)
+    const user_id = user_rfid;  // Replace with dynamic userID when necessary
+    const userRef = ref(database, 'users/' + userId);
+
+    // Listen for changes in the balance and other data
+    onValue(userRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            // Update the HTML with balance and user ID
+            document.querySelector('.balance-container strong').innerText = data.balance;
+            document.querySelector('.rfid-container').innerHTML = `ID Number <br>${user_id}`;
+        }
+    });
+</script> -->
+
+<!-- Include your custom JS -->
+
+
+{% endblock content %}

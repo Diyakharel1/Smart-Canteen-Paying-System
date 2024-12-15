@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Vojan Express</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Habibi:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block link %}{% endblock link %}
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+       
+        {% block search %}
+        {% endblock search %}
+        <div class="profile">
+            <img src="{% static 'images/default.jpg' %}" alt="Profile Icon">
+            <a href="{% url 'setting' %}">{{ user.username }}</a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="main-container">
+            <div class="site-main">
+                <aside class="slide">
+                    <h1 class="menu-title">Main Menu</h1>
+                    <ul class="nav-links">
+                        <li><a href="{% url 'home' %}"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                        <li><a href="{% url 'menu' %}"><i class="fas fa-book"></i> Menu</a></li>
+                        <li><a href="{% url 'order' %}"><i class="fas fa-receipt"></i> Order</a></li>
+                        <li><a href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="{% url 'setting' %}"><i class="fas fa-cog"></i> Settings</a></li>
+                    </ul>
+                </aside>
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </main>
+    
+    {% block footer %}
+    <footer class="footer">
+        <p>Get In Touch</p>
+        <div class="social-icons">
+            <a href="#"><img src="{% static 'images/fab.svg' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'images/inst.svg' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'images/pin.svg' %}" alt="Pinterest"></a>
+        </div>
+        <p>&copy; VojanExpress. All Rights Reserved 2024. Licensing</p>
+    </footer>
+    {% endblock footer %}   
+</body>
+</html>
